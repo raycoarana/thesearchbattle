@@ -22,11 +22,13 @@ public class MemorySearch extends BaseSearchEngine {
     protected List<Car> onSearch(String term) {
         ArrayList<Car> results = new ArrayList<Car>();
         for(Car car : mCars) {
-            this.contained(term.toLowerCase(),
+            if(this.contained(term.toLowerCase(),
                            car.getCountry(),
                            car.getBrand(),
                            car.getName(),
-                           String.valueOf(car.getYear()));
+                           String.valueOf(car.getYear()))) {
+                results.add(car);
+            }
         }
 
         return results;
